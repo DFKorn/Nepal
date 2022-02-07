@@ -105,7 +105,7 @@ li img{
    
 }
 
-#experiences h2{
+h2{
     text-align: center;
     font-weight: 600;
     font-size: 2.7rem;
@@ -168,12 +168,29 @@ li img{
 
 
 .destinations{
-    display: flex;
+    /*display: flex;*/
 }
+
+.slideshow{
+   width: 300vw; 
+}
+
+
 .location{
-
+    float: left;
+    width: 31vw;
+    padding: 0 0.3vw;
 }
 
+.location-card{
+    position: relative;
+}
+
+.location img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+}
 .location:hover{
 
 }
