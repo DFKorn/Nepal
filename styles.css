@@ -174,7 +174,7 @@ h3{
     position: relative;
 }
 
-.destinations:hover button {opacity: 0.8;}
+.destinations:hover button {opacity: 0.7;}
 
 .destinations button{
     position: absolute;
