@@ -146,7 +146,7 @@ h2{
     overflow: hidden;
 }
 
-.activity h3{
+h3{
     position: absolute;
     bottom: 7px;
     width: 100%;
@@ -169,6 +169,29 @@ h2{
 
 .destinations{
     /*display: flex;*/
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.destinations:hover button {opacity: 0.8;}
+
+.destinations button{
+    position: absolute;
+    height: 100%;
+    width: 1.75vw;
+    z-index: 10;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    opacity: 0;
+}
+.destinations button.previous{
+    left: 0;
+}
+
+.destinations button.next{
+    right: 0;
 }
 
 .slideshow{
