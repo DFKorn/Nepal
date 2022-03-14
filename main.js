@@ -1,4 +1,4 @@
-let width = 31;
+let width = 29.5;
 let step = 1;
 let imgDisplayed = 3;
 
