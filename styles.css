@@ -1,3 +1,8 @@
+.resize-animation-stopper * {
+    animation: none !important;
+    transition: none !important;
+  }
+
 h1{
     Font-Family: 'Permanent Marker', Cursive;
     Font-Size: 6rem;
@@ -213,6 +218,9 @@ h3{
    transition: transform 1s ease-out;
 }
 
+.resize-animation-stopper {
+    transition: none !important;
+  }
 
 .location{
     float: left;
@@ -256,6 +264,7 @@ h3{
         transition: transform 1s ease-out;
         scroll-snap-type: x mandatory;
         width: 100%;
+        transform: translateX(0) !important;
      }
     
     .location{
