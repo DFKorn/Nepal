@@ -1,7 +1,10 @@
-.resize-animation-stopper * {
+/*.resize-animation-stopper * {
     animation: none !important;
     transition: none !important;
   }
+.resize-animation-stopper {
+    transition: none !important;
+  }*/
 
 h1{
     Font-Family: 'Permanent Marker', Cursive;
@@ -196,6 +199,7 @@ h3{
     cursor: pointer;
     opacity: 0;
     background-color: #e5ebed;
+    top:0;
 }
 .destinations button.previous{
     left: 0;
@@ -214,18 +218,27 @@ h3{
 }
 
 .slideshow{
-   width: 30000px;
+   /*width: 30000px;
    transition: transform 1s ease-out;
+   */
+   width: 100%;
+   position: relative;
+   display: flex;
+   scroll-snap-type: x mandatory;
+   overflow-x: auto;
+   scroll-behavior: smooth;
+}
+.slideshow::-webkit-scrollbar{
+    display: none;
 }
 
-.resize-animation-stopper {
-    transition: none !important;
-  }
-
 .location{
-    float: left;
+    /*float: left;*/
     width: 31vw;
     padding: 0 0.3vw;
+    scroll-snap-align: end;
+    scroll-snap-stop: normal;
+    flex-shrink: 0;
 }
 
 .location-card{
@@ -237,18 +250,15 @@ h3{
     display: block;
     border-radius: 10px;
 }
-.location:hover{
-
-}
 
 @media screen and (max-width: 600px) {
     
     .hero{
-        height: 20vh;
+        height: 25vh;
     }
     
     .experiences{
-        justify-content: space-evenly
+        justify-content: space-evenly;
     }
 
     .activity{
@@ -258,25 +268,17 @@ h3{
     }
 
     .slideshow{
-        position: relative;
-        display: flex;
-        overflow-x: auto;
-        transition: transform 1s ease-out;
-        scroll-snap-type: x mandatory;
         width: 100%;
-        transform: translateX(0) !important;
+        /*transform: translateX(0) !important;*/
      }
     
     .location{
-        position: relative;
         width: 78vw;
         padding: 0 0.5vw;
-        scroll-snap-align: end;
-        scroll-snap-stop: normal;
-        flex-shrink: 0;
+        
     }
 
-    .destinations button {
+    /*.destinations button {
         display: none;
-    }
+    }*/
 }
