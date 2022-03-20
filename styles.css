@@ -8,7 +8,6 @@
 
 h1{
     Font-Family: 'Permanent Marker', Cursive;
-    Font-Size: 6rem;
     Font-size: 4.5vw;
 }
 
@@ -81,7 +80,6 @@ li img{
     animation: appearHeader 2.0s ease-in;
 }
 .hero p {
-    font-size: 1.59rem;
     font-size: 1.5vw;
     margin: 0%;
     opacity: 0.85;
@@ -116,7 +114,6 @@ li img{
 h2{
     text-align: center;
     font-weight: 600;
-    font-size: 2.7rem;
     font-size: 3.0vw;
     letter-spacing: 2px;
 
@@ -159,7 +156,6 @@ h3{
     bottom: 7px;
     width: 100%;
     color: #e5ebed;
-    font-size: 1.875rem;
     font-size: 1.6vw;
     margin: 0;
     display: block;
@@ -252,12 +248,22 @@ h3{
 }
 
 @media screen and (max-width: 600px) {
+
+    h2 {
+        font-size: 2.2vh;
+    }
+    h3 {
+        font-size: 4.3vw
+    }
     
     .hero{
         height: 25vh;
     }
-    li.contact{
+    li.contacts {
         display: none;
+    }
+    li img{
+        width: 30px;
     }
     .experiences{
         justify-content: space-evenly;
@@ -279,8 +285,16 @@ h3{
         padding: 0 0.5vw;
         
     }
+    
+    @media (hover: none) {
+        button {display: none;}
+      } 
 
-    /*.destinations button {
-        display: none;
-    }*/
+    .destinations button {
+        width: 3vh;
+    }
+    .fa-solid{
+        font-size: 2vh;
+        
+    }
 }
