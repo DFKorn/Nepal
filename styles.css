@@ -36,7 +36,7 @@ header{
     margin: auto;
 }
 
-header a{
+header .logo{
     font-family: 'Permanent Marker', Cursive;
     font-size: 20px;
     padding-left: 1%;
@@ -256,7 +256,9 @@ h3{
     .hero{
         height: 25vh;
     }
-    
+    li.contact{
+        display: none;
+    }
     .experiences{
         justify-content: space-evenly;
     }
