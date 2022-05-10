@@ -1,0 +1,155 @@
+body{
+    Font-Family: 'Overpass', Sans-Serif;
+    Font-Size: 17px;
+    margin: 0%;
+    background-color: #e5ebed;
+    color: #e5ebed;
+}
+
+h1{
+    font-Family: 'Permanent Marker', Cursive;
+    font-size: calc(1.4rem + 3.3vw)
+}
+
+h3 {
+    font-size: calc(0.7rem + 1vw);
+}
+
+header{
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: inherit;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 2000px;
+    margin: auto;
+}
+
+header .logo{
+    font-family: 'Permanent Marker', Cursive;
+    font-size: 20px;
+    padding-left: 2%;
+    text-decoration: none;
+    color: #012e4b;
+}
+
+nav{
+    padding-right: 1%;
+}
+
+
+li{
+    vertical-align: middle;
+    display: inline-block;
+    padding-left: 2rem;
+}
+
+li.socials {
+    padding-left: 0.5rem;
+}
+li img{
+    width: 25px;
+}
+
+
+.container{
+    position: relative;
+    height: 98vh;
+    width: 100%;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
+.overlay a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.content{
+    position: relative;
+    max-width: 2000px;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+.content-container{
+    box-sizing: border-box;
+    padding-left: 2%;
+    
+}
+
+.content-container h1 {
+    margin: 0 0 0.8rem;
+}
+
+.content-container h3 {
+    margin: 0 0 1.2rem;
+}
+
+.content-container p {
+    margin: 0 0;
+    padding-bottom: 2rem;
+    max-width: 70%;
+}
+.background{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.button-styled {
+    color: #012e4b;
+    background-color: #e5ebed;
+    font-weight: 500;
+    font-size: 100%;
+    border-radius: 15px;
+    padding: 10px;
+}
+.pic1{
+    background-image: url('../Resources/Pages/Pokhrara_view.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    z-index: -1;
+    
+}
+
+.pic2{
+    background-image: url('../Resources/Pages/Pokhrara_view2.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    z-index: -1;
+    
+    
+}
+.pic3{
+    background-image: url('../Resources/Pages/Pokhrara_view3.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    z-index: -1;
+    
+    
+}
