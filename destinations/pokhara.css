@@ -39,7 +39,7 @@ header .logo{
 }
 
 nav{
-    padding-right: 1%;
+    padding-right: 2%;
 }
 
 
@@ -91,6 +91,7 @@ li img{
 .content-container{
     box-sizing: border-box;
     padding-left: 2%;
+    width: 100%;
     
 }
 
@@ -105,7 +106,7 @@ li img{
 .content-container p {
     margin: 0 0;
     padding-bottom: 2rem;
-    max-width: 70%;
+    max-width: 35%;
 }
 .background{
     position: absolute;
@@ -131,6 +132,15 @@ li img{
     background-size: cover;
     z-index: -1;
     
+}
+
+
+.even {
+    text-align: right;
+    padding-right: 2%;
+}
+.even p {
+    display: inline-block;
 }
 
 .pic2{
