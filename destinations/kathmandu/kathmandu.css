@@ -125,7 +125,7 @@ li img{
     padding: 10px;
 }
 .pic1{
-    background-image: url('../Resources/Pages/Pokhrara_view.jpg');
+    background-image: url('../../Resources/Pages/Kathmandu_view.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: 50%;
@@ -144,7 +144,7 @@ li img{
 }
 
 .pic2{
-    background-image: url('../Resources/Pages/Pokhrara_view2.jpg');
+    background-image: url('../../Resources/Pages/Kathmandu_view2.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: 50%;
@@ -154,7 +154,7 @@ li img{
     
 }
 .pic3{
-    background-image: url('../Resources/Pages/Pokhrara_view3.jpg');
+    background-image: url('../../Resources/Pages/Kathmandu_view3.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: 50%;
