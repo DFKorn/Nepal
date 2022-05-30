@@ -71,3 +71,52 @@ window.addEventListener("resize", () => {
     slider.classList.remove("resize-animation-stopper");
   }, 400);
 });*/
+
+//const scrollOffset = 100;
+const percentageScroll = 95;
+ 
+const scrollElements = document.querySelectorAll(".scroll-fade");
+ 
+const elementInView = (el, percentageScroll = 100) => {
+  const elementTop = el.getBoundingClientRect().top;
+ 
+  return (
+    elementTop <= ((window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100))
+  );
+};
+
+const displayScrollElement = (element) => {
+  element.classList.add('scrolled');
+}
+ 
+const hideScrollElement = (element) => {
+  element.classList.remove('scrolled');
+}
+
+const handleScrollAnimation = () => {
+  scrollElements.forEach((el) => {
+    if (elementInView(el, percentageScroll)){
+      displayScrollElement(el);
+    } else {
+      hideScrollElement(el);
+    }
+  })  
+  } 
+ 
+const handleAnimation = () =>{
+  scrollElements.forEach((el) =>{
+    if (elementInView(el, percentageScroll)){
+      displayScrollElement(el);
+  }})
+}  
+
+
+handleAnimation();
+
+window.addEventListener('resize', ()=>{
+  handleAnimation();
+})
+
+window.addEventListener('scroll', () => {
+  handleScrollAnimation();
+})
