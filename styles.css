@@ -356,3 +356,36 @@ h3{
         opacity: 1;
     }
   } */
+
+
+footer {
+    margin: 4.5rem 0;
+}
+.footer {
+    text-align: center;
+}
+footer .logo{
+    font-family: 'Permanent Marker', Cursive;
+    font-size: 20px;
+    text-decoration: none;
+    color: #012e4b;
+}
+
+.footer .contacts{
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.footer a {
+    margin-left: 1rem;
+}
+
+.legal-info{
+    margin-top: 3rem;
+}
+
+footer span {
+    color: #012e4b;
+    opacity: 0.6;
+}
