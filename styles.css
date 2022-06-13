@@ -25,6 +25,13 @@ header{
     z-index: 10;
     background-color: inherit;
 }
+
+a {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+}
+
 .header {
     display: flex;
     justify-content: space-between;

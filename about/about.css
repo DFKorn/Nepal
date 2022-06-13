@@ -1,0 +1,156 @@
+body{
+    Font-Family: 'Overpass', Sans-Serif;
+    Font-Size: 17px;
+    margin: 0%;
+    background-color: #e5ebed;
+    color: #e5ebed;
+}
+
+h1{
+    font-Family: 'Permanent Marker', Cursive;
+    font-size: calc(1.4rem + 3.3vw)
+}
+
+h3 {
+    font-size: calc(0.7rem + 1vw);
+}
+
+header{
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: inherit;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 2000px;
+    margin: auto;
+}
+
+header .logo{
+    font-family: 'Permanent Marker', Cursive;
+    font-size: 20px;
+    padding-left: 2%;
+    text-decoration: none;
+    color: #012e4b;
+}
+
+nav{
+    padding-right: 2%;
+}
+
+
+li{
+    vertical-align: middle;
+    display: inline-block;
+    padding-left: 2rem;
+}
+
+li.socials {
+    padding-left: 0.5rem;
+}
+li img{
+    width: 25px;
+}
+
+
+.background-container{
+    position: relative;
+    height: 98vh;
+    width: 100%;
+    margin-bottom: -25vh;
+}
+
+
+.content{
+    position: relative;
+    max-width: 1200px;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+.content-container{
+    box-sizing: border-box;
+    padding-left: 2%;
+    width: 100%;
+    text-align: center;
+    color: #012e4b;
+    
+}
+
+.content-container h1 {
+    margin: 0 0 0.8rem;
+}
+
+.content-container h3 {
+    margin: 0 0 1.2rem;
+}
+
+
+.background{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.background::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+    display: block;
+    z-index: 2;
+    background: linear-gradient(0deg, #e5ebed 25%,hsl(0deg 0% 100% / 0%) 100%);
+}
+
+
+.pic1{
+    background-image: url('../Resources/about2.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    z-index: -1;
+    
+}
+
+footer {
+    margin: 3rem;
+}
+.footer {
+    text-align: center;
+}
+footer .logo{
+    font-family: 'Permanent Marker', Cursive;
+    font-size: 20px;
+    text-decoration: none;
+    color: #012e4b;
+}
+
+.footer .contacts{
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.footer a {
+    margin-left: 1rem;
+}
+
+.legal-info{
+    margin-top: 3rem;
+}
+
+footer span {
+    color: #012e4b;
+    opacity: 0.6;
+}
