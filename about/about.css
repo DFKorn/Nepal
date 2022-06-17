@@ -3,7 +3,7 @@ body{
     Font-Size: 17px;
     margin: 0%;
     background-color: #e5ebed;
-    color: #e5ebed;
+    color: #012e4b;
 }
 
 h1{
@@ -80,8 +80,6 @@ li img{
     padding-left: 2%;
     width: 100%;
     text-align: center;
-    color: #012e4b;
-    
 }
 
 .content-container h1 {
@@ -123,6 +121,21 @@ li img{
     
 }
 
+.location {
+    text-align: center;
+}
+.mapBox{
+    position: relative;
+    height: 40vh;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.mapBox iframe {
+    width: 100%;
+    height: 100%;
+}
+
 footer {
     margin: 4.5rem 0;
 }
@@ -151,6 +164,5 @@ footer .logo{
 }
 
 footer span {
-    color: #012e4b;
     opacity: 0.6;
 }
