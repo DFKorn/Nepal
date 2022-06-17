@@ -184,7 +184,7 @@ h2{
     color: rgba(255, 255, 255, 1);
     visibility: hidden;
     font-size: calc(0.7rem + 0.7vw);
-    margin: 3%;
+    margin: 2% 3%;
 }
 
 .image::before{
