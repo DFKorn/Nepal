@@ -18,6 +18,10 @@ body{
     color: #012e4b;
 }
 
+section{
+    margin-top: 4rem;
+}
+
 header{
     width: 100%;
     position: sticky;
@@ -68,43 +72,74 @@ li img{
 
 .hero{
     position: relative;
-    height: 50vw;
-}
-
-.hero-background{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-image: url('Resources/aaron.jpg');
-    background-repeat: no-repeat;
-    background-position: center 70%;
-    background-size: cover;
-    
+    height: 56vw;
+    margin-top: 0%;
 }
 
 .hero-header{
     width: 100%;
-    height: 100%;
+    height: 92%;
     color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+}
+
+.hero video {
+    position: absolute;
+    top: 0%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    
 }
 
 .hero-header h1 {
-    margin: 50px 0 15px;
-    opacity: 0.85;
-    animation: appearHeader 2.0s ease-in;
-}
-.hero-header p {
-    font-size: 1.5vw;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    font-size: calc(1.4rem + 25vw);
+    text-align: center;
+    line-height: 0.8;
+    text-transform: uppercase;
+    background-color: #e5ebed;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0%;
-    opacity: 0.85;
-    animation: appearParagraph 1.5s ease-in 0.8s backwards;
+    mix-blend-mode: screen;
+    
+}
+
+.hero-header .mix-overlay{
+    margin: 0%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #e5ebed;
+    color: #012e4b;
+    mix-blend-mode: darken;
+    text-align: center;
+    top: 0;
+}
+
+.hero-logo {
+    margin: 0%;
+    position: relative;
+    background-color: transparent;
+    color: #012e4b;
+    bottom: 0%;
     font-Family: 'Permanent Marker', Cursive;
 }
-@keyframes appearHeader{
+
+.hero-logo  h4{
+    margin: 0;
+    position: absolute;
+    transform: translateY(-70%);
+    right: 25%;
+    font-size: 3vw;
+}
+
+/* @keyframes appearHeader{
     0% {
         opacity: 0;
     }
@@ -125,7 +160,7 @@ li img{
     100% {
         opacity:0.85;
     }
-}
+} */
 
 
 h2{
