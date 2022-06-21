@@ -81,6 +81,7 @@ li img{
     height: 92%;
     color: white;
     position: relative;
+    overflow: hidden;
 }
 
 .hero video {
