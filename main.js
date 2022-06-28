@@ -72,6 +72,8 @@ window.addEventListener("resize", () => {
   }, 400);
 });*/
 
+
+//Scrolling Animation
 //const scrollOffset = 100;
 const percentageScroll = 95;
  
@@ -110,7 +112,6 @@ const handleAnimation = () =>{
   }})
 }  
 
-
 handleAnimation();
 
 window.addEventListener('resize', ()=>{
@@ -120,3 +121,35 @@ window.addEventListener('resize', ()=>{
 window.addEventListener('scroll', () => {
   handleScrollAnimation();
 })
+
+//Toggle Panel 
+const toggleMenu = document.querySelector('.toggle');
+const togglePanel = document.querySelector('.toggle-panel')
+const body = document.querySelector('body');
+
+toggleMenu.onclick = function(){
+  toggleMenu.classList.toggle('active')
+  togglePanel.classList.toggle('active')
+  body.style.overflow === '' ? body.style.overflow ='hidden' : body.style.overflow =''
+}
+
+const removeActiveClass = () => {
+  if (window.innerWidth > 940 && toggleMenu.classList.contains('active')) {
+    toggleMenu.classList.remove('active')
+    togglePanel.classList.remove('active')
+  }
+}
+
+const removeBodyOverflow = () => {
+  if (window.innerWidth > 940 && body.style.overflow === 'hidden'){
+    body.style.overflow = '';
+  }
+} 
+
+window.addEventListener('resize', ()=>{
+  removeActiveClass()
+  removeBodyOverflow()
+}) 
+
+removeActiveClass()
+removeBodyOverflow()
