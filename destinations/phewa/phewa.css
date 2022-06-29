@@ -135,7 +135,7 @@ li img{
 }
 .pic1{
     background-image: url('../../Resources/Pages/Phewa_view.jpg');
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: cover;
@@ -154,7 +154,7 @@ li img{
 
 .pic2{
     background-image: url('../../Resources/Pages/Phewa_view2.jpg');
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: cover;
@@ -164,7 +164,7 @@ li img{
 }
 .pic3{
     background-image: url('../../Resources/Pages/Phewa_view3.jpg');
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: cover;
