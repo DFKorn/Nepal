@@ -569,7 +569,7 @@ footer span {
         top: 0;
         left: 0;
         display: grid;
-        grid-template-rows: 130px 5fr 1fr;
+        grid-template-rows: 100px 5fr 1fr;
         justify-content: center;
         align-items: center;
         width: 100%;
