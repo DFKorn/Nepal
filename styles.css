@@ -19,7 +19,7 @@ body{
 }
 
 section{
-    margin-top: 4rem;
+    margin-top: 5%;
 }
 
 header{
@@ -193,6 +193,7 @@ h2{
     box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 2%;
 }
 
 .section-header h2, p{
@@ -416,7 +417,23 @@ h3{
     padding: 0.3rem;
     box-sizing: border-box;
     position: relative;
+    transition: transform 0.5s ease-out;
 }
+
+.season:hover{
+    transform-origin: 50% 50%;
+    transform: scale(1.2);
+    z-index: 30;
+}
+
+.season:first-of-type{
+    transform-origin: 0% 50%;
+}
+
+.season:last-of-type{
+    transform-origin: 100% 50%;
+}
+
 .season img {
     width: 100%;
     display: block;
@@ -521,10 +538,15 @@ footer span {
         max-width: 50%;
         flex-basis: 50%;
         padding: 0.1rem;
+        pointer-events: none;
     }
 }
 
 @media screen and (max-width: 940px){
+
+    section {
+        margin-top: 4rem;
+    }
 
     .header{
         padding: 20px 20px 20px 0px;
