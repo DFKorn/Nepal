@@ -454,9 +454,11 @@ h3{
     position: relative;
     top: -8px;
     width: 100%;
-    height: 30%;
+    height: 25%;
     background-color: #100c02;
     border-radius: 0 0 10px 10px;
+    transition: all .3s ease;
+    background-color: transparent;
 }
 
 .season:hover .season-footer{
@@ -498,8 +500,9 @@ h3{
     font-size: calc(0.3rem + 0.8vw);
     font-weight: 500;
 }
-.season:hover h4 {
-    /*color: #e5ebed;*/
+
+.season-footer a:hover h4{
+    color: #e5ebed;
 }
 
 .season svg {
@@ -510,9 +513,10 @@ h3{
     fill: #d7d7d7;
 }
 
-.season:hover svg {
-    /* border: 2px solid #e5ebed;
-    fill: #e5ebed; */
+.season-footer a:hover svg{
+    border: 2px solid #e5ebed;
+    fill: #100c02;
+    background-color: #e5ebed;
 }
 
 
