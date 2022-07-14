@@ -301,6 +301,36 @@
         </div>
       </div>
     </section>
+    <section id="Nepal-Now">
+      <div class="section-header">
+        <h2 class="scroll-fade">Nepal Now</h2>
+        <p class="scroll-fade">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate, vel pariatur molestias suscipit ipsa minus, quae reprehenderit voluptatibus adipisci, quas delectus? Iste ex, pariatur laudantium illum iure nesciunt tenetur. Mollitia?</p>
+      </div>
+      <div class="news">
+        <button class="previous">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="slideshow">
+          <div class="news-card">
+            <a class="news-card-image" href="#">
+              <img src="./Resources/aaron.jpg" alt="test">
+            </a>
+            <div class="news-content">
+              <div class="date">
+                <img src="./Resources/calendar.svg" alt="">
+                <p>July 10, 2022</p> 
+              </div>
+              <a class="news-card-header" href="#">
+                <h4>Some random header for the news</h4>
+              </a>
+            </div>
+          </div>
+        </div>
+        <button class="next">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </section>
     <div class="weather">
       <div class="api"></div>
     </div>
@@ -333,6 +363,9 @@
         const urlToFetch = `${forecastUrl}${city}&appid=${apiKey}&units=metric`
         try {
           const response = await fetch(urlToFetch);
+          if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+          }
           const jsonResponse = await response.json();
           // const temperatureNow = jsonResponse.main.temp;
           // return temperatureNow;
@@ -343,13 +376,82 @@
         }
       }
 
-      const historyUrl = 'http://history.openweathermap.org/data/2.5/history/city?q='
-      const getHistoryWeather = async () =>{
-        const urlToFetch = `${historyUrl}${city}&type=hour&start=1612539279&end=1613835279&appid=${apiKey}&units=metric`;
-        const response = await fetch(urlToFetch);
-        const jsonResponse = await response.json();
-        return jsonResponse;
+      const execute = () => {
+        const temp = getCurrentForecast().then(data => console.log(data.main.temp))
       }
+
+      const executeSearch = async () => {
+        const api = document.querySelector('.api');
+        let tempH2 = document.createElement('h2');
+        const tempData = await getCurrentForecast()
+        tempH2.textContent = tempData.main.temp
+        api.append(tempH2)
+      };
+
+
+      const mapUrl = 'https://tile.openweathermap.org/map/temp_new/0/0/0.png?appid=';
+      const getMap = async () => {
+        const urlToFetch = `${mapUrl}${apiKey}`;
+        try{
+          const response = await fetch(urlToFetch);
+          if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+          }
+          return response;
+        }
+        catch(error){
+          console.log(error.message)
+        }
+      };
+
+      const weatherApi = 'uZK0sjeVDXJ6YYa8PSV1VbrYr8rQDdRNwpcZJPHYOKQ';
+      const newsUrl = 'https://api.newscatcherapi.com/v2/search?q=';
+      const searchTerm = 'Nepal+AND+NOT+COVID';
+      const getNews = async () => {
+        const urlToFetch = `${newsUrl}${searchTerm}`;
+        try{
+          const response = await fetch(urlToFetch,{
+            method:'GET',
+            headers: {'x-api-key': weatherApi}
+          });
+          if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+          }
+          const jsonResponse = await response.json();
+          return jsonResponse;
+        }
+        catch(error){
+          console.log(error.message)
+        }
+      };
+
+      const executeNewsLoad = async () => {
+        const newsData = await getNews()
+        const newsImageDiv = document.querySelector('.news-card-image');
+        const newsImageUrl = newsData.articles[0].media;
+        const newsImage = document.createElement('img');
+        newsImage.setAttribute('src',newsImageUrl);
+        newsImageDiv.append(newsImage)
+      };
+
+
+      nesw.then(data =>{ima.setAttribute('src',data.articles[0].media); div.append(ima)})
+
+      // const historyUrl = 'http://history.openweathermap.org/data/2.5/history/city?q='
+      // const getHistoryWeather = async () =>{
+      //   const urlToFetch = `${historyUrl}${city}&type=hour&start=1612539279&end=1613835279&appid=${apiKey}&units=metric`;
+      //   try {
+      //     const response = await fetch(urlToFetch);
+      //         if (!response.ok) {
+      //           throw new Error(`HTTP error: ${response.status}`);
+      //         }
+      //     const jsonResponse = await response.json();
+      //     return jsonResponse;
+      //   }
+      //   catch(error){
+      //     console.log(error.message)
+      //   }
+      // }
     </script>
   </body>
 </html>
