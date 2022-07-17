@@ -310,8 +310,8 @@
         <button class="previous">
           <i class="fa-solid fa-chevron-left"></i>
         </button>
-        <div class="slideshow">
-          <div class="news-card">
+        <div class="slideshow news-slider">
+          <!-- <div class="news-card">
             <a class="news-card-image" href="#">
               <img src="./Resources/aaron.jpg" alt="test">
             </a>
@@ -322,6 +322,29 @@
               </div>
               <a class="news-card-header" href="#">
                 <h4>Some random header for the news</h4>
+              </a>
+            </div>
+          </div> -->
+          <div class="news-card">
+            <a class="news-card-image" href="#">
+            </a>
+            <div class="news-content">
+              <div class="date">
+                <img src="./Resources/calendar.svg" alt=""> 
+              </div>
+              <a class="news-card-header" href="#">
+              </a>
+            </div>
+          </div>
+          <div class="news-card">
+            <a class="news-card-image" href="#">
+            </a>
+            <div class="news-content">
+              <div class="date">
+                <img src="./Resources/calendar.svg" alt=""> 
+                <p>231313213123</p>
+              </div>
+              <a class="news-card-header" href="#">
               </a>
             </div>
           </div>
@@ -425,16 +448,119 @@
         }
       };
 
+
+
+
+      const executeNe = async () => {
+        const newsData = await getNews()
+        const slider = document.querySelector('.news-slider')
+        for(let i = 0; i < 8; i++) {
+          const newsCard = createNewsCardDiv(newsData, i)
+          slider.append(newsCard)
+        }
+        
+      }
+
+
+      const createNewsCardDiv = (newsData, index) => {
+        const newsCardDiv = document.createElement('div')
+        newsCardDiv.classList.add('news-card')
+        // create news-card-image element
+        const newsImageDiv = document.createElement('a')
+        newsImageDiv.classList.add('news-card-image')
+        const newsImageUrl = newsData.articles[index].media;
+        const newsImage = document.createElement('img');
+        const newsLink = newsData.articles[index].link;
+        newsImage.setAttribute('src',newsImageUrl);
+        newsImageDiv.append(newsImage)
+        newsImageDiv.setAttribute('href', newsLink)
+        // create news-content element
+        //create date element
+        const dateDiv = document.createElement('div');
+        dateDiv.classList.add('date');
+        const dateParagraph = document.createElement('p');
+        const dateContent = newsData.articles[index].published_date;
+        dateParagraph.textContent = dateContent;
+        const calendarImage = document.createElement('img');
+        calendarImage.setAttribute('src', './Resources/calendar.svg')
+        dateDiv.append(calendarImage, dateParagraph)
+        // create news-card-header element
+        const newsCardHeader = document.createElement('a')
+        newsCardHeader.classList.add('news-card-header')
+        const headerContent = newsData.articles[index].title;
+        const newsHeader = document.createElement('h4');
+        newsHeader.textContent = headerContent;
+        newsCardHeader.append(newsHeader);
+        newsCardHeader.setAttribute('href', newsLink)
+        //complete news-content element
+        const newsContent = document.createElement('div');
+        newsContent.classList.add('news-content');
+        newsContent.append(dateDiv, newsCardHeader);
+        //complete news Card element
+        newsCardDiv.append(newsImageDiv,newsContent)
+        return newsCardDiv
+
+      }
+
+
+
+
+
+
+
       const executeNewsLoad = async () => {
         const newsData = await getNews()
+
+        const newsCard = document.querySelectorAll('.news-card')
+        const slide = document.querySelector('.news-slider')
+
+        newsCard.forEach((card,index) => {
+        const newsLink = newsData.articles[index].link;
         const newsImageDiv = document.querySelector('.news-card-image');
-        const newsImageUrl = newsData.articles[0].media;
+        const newsImageUrl = newsData.articles[index].media;
         const newsImage = document.createElement('img');
         newsImage.setAttribute('src',newsImageUrl);
         newsImageDiv.append(newsImage)
+        newsImageDiv.setAttribute('href', newsLink)
+
+        const dateDiv = document.querySelector('.date');
+        const dateParagraph = document.createElement('p');
+        const dateContent = newsData.articles[index].published_date;
+        dateParagraph.textContent = dateContent;
+        dateDiv.append(dateParagraph)
+
+        const newsCardHeader = document.querySelector('.news-card-header');
+        const headerContent = newsData.articles[index].title;
+        const newsHeader = document.createElement('h4');
+        newsHeader.textContent = headerContent;
+        newsCardHeader.append(newsHeader);
+        newsCardHeader.setAttribute('href', newsLink)
+        // newsCard.append(newsImageDiv,dateDiv,newsCardHeader)
+        slide.append(card)
+        })
+
+        // const newsLink = newsData.articles[0].link;
+        // const newsImageDiv = document.querySelector('.news-card-image');
+        // const newsImageUrl = newsData.articles[0].media;
+        // const newsImage = document.createElement('img');
+        // newsImage.setAttribute('src',newsImageUrl);
+        // newsImageDiv.append(newsImage)
+        // newsImageDiv.setAttribute('href', newsLink)
+
+        // const dateDiv = document.querySelector('.date');
+        // const dateParagraph = document.createElement('p');
+        // const dateContent = newsData.articles[0].published_date;
+        // dateParagraph.textContent = dateContent;
+        // dateDiv.append(dateParagraph)
+
+        // const newsCardHeader = document.querySelector('.news-card-header');
+        // const headerContent = newsData.articles[0].title;
+        // const newsHeader = document.createElement('h4');
+        // newsHeader.textContent = headerContent;
+        // newsCardHeader.append(newsHeader);
+        // newsCardHeader.setAttribute('href', newsLink)
       };
-
-
+      
       nesw.then(data =>{ima.setAttribute('src',data.articles[0].media); div.append(ima)})
 
       // const historyUrl = 'http://history.openweathermap.org/data/2.5/history/city?q='

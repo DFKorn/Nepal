@@ -74,7 +74,6 @@ window.addEventListener("resize", () => {
 
 
 //Scrolling Animation
-//const scrollOffset = 100;
 const percentageScroll = 95;
  
 const scrollElements = document.querySelectorAll(".scroll-fade");
