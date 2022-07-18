@@ -5,38 +5,6 @@ const next = document.querySelector('.next');
 const locations = document.querySelectorAll('.location');
 
 
-/*That were the first options for slideshow to work.
-One moved the slideshow element, the other moved every location element 
-Decided to leave it here just in case...*/
-//Arrow controls for slideshow element
-/*let width = 29.5;
-let step = 1;
-let imgDisplayed = 3;
-
-let position = 0;
-
-function left() {
-    position += width * step;
-    position = Math.min(position, 0);
-
-    for(const location of locations){
-        location.style.transform = `translateX(${position}vw)`;
-    }
-    //slider.style.transform = `translateX(${position}vw)`;
-}
-
-function right(){
-    position -= width * step;
-    position = Math.max(position, -width * (locations.length - step*imgDisplayed))
-
-    for(const location of locations){
-        location.style.transform = `translateX(${position}vw)`;
-    }
-    //slider.style.transform = `translateX(${position}vw)`;
-}
-prev.addEventListener('click', left)
-next.addEventListener('click', right)
-*/
 
 const gallery = document.querySelector('.destinations');
 const gallery_scroller = gallery.querySelector('.slideshow');
@@ -152,3 +120,109 @@ window.addEventListener('resize', ()=>{
 
 removeActiveClass()
 removeBodyOverflow()
+
+// Nepal Now section
+// News fetch and render code
+
+//Async function that fetches news object using "newscatcher API"
+//https://newscatcherapi.com/
+const newsApi = 'uZK0sjeVDXJ6YYa8PSV1VbrYr8rQDdRNwpcZJPHYOKQ';
+const newsUrl = 'https://api.newscatcherapi.com/v2/search?q=';
+const searchTerm = 'Nepal+AND+NOT+COVID';
+const getNews = async () => {
+  const urlToFetch = `${newsUrl}${searchTerm}`;
+  try{
+    const response = await fetch(urlToFetch,{
+      method:'GET',
+      headers: {'x-api-key': newsApi}
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    const jsonResponse = await response.json();
+    return jsonResponse;
+  }
+  catch(error){
+    console.log(error.message)
+  }
+};
+
+ //Function to create "news-card" div 
+ const createNewsCardDiv = (newsData, index) => {
+  const newsCardDiv = document.createElement('div')
+  newsCardDiv.classList.add('news-card')
+  // create news-card-image element
+  const newsImageDiv = document.createElement('a')
+  newsImageDiv.classList.add('news-card-image')
+  const newsImageUrl = newsData.articles[index].media;
+  const newsImage = document.createElement('img');
+  const newsLink = newsData.articles[index].link;
+  newsImage.setAttribute('src',newsImageUrl);
+  newsImageDiv.append(newsImage)
+  newsImageDiv.setAttribute('href', newsLink)
+  // create news-content element
+  //create date element
+  const dateDiv = document.createElement('div');
+  dateDiv.classList.add('date');
+  const dateParagraph = document.createElement('p');
+  const dateContent = newsData.articles[index].published_date;
+  dateParagraph.textContent = dateContent;
+  const calendarImage = document.createElement('img');
+  calendarImage.setAttribute('src', './Resources/calendar.svg')
+  dateDiv.append(calendarImage, dateParagraph)
+  // create news-card-header element
+  const newsCardHeader = document.createElement('a')
+  newsCardHeader.classList.add('news-card-header')
+  const headerContent = newsData.articles[index].title;
+  const newsHeader = document.createElement('h4');
+  newsHeader.textContent = headerContent;
+  newsCardHeader.append(newsHeader);
+  newsCardHeader.setAttribute('href', newsLink)
+  //complete news-content element
+  const newsContent = document.createElement('div');
+  newsContent.classList.add('news-content');
+  newsContent.append(dateDiv, newsCardHeader);
+  //complete news Card element
+  newsCardDiv.append(newsImageDiv,newsContent)
+  return newsCardDiv
+}
+// function to execute fetch and load news
+const executeNewsLoad = async () => {
+  const newsData = await getNews()
+  const slider = document.querySelector('.news-slider')
+  for(let i = 0; i < 8; i++) {
+    const newsCard = createNewsCardDiv(newsData, i)
+    slider.append(newsCard)
+  }
+}
+executeNewsLoad();
+
+//Weather fetch and render code
+
+//Async function that fetches weather object using "OpenWeather API"
+//https://openweathermap.org/
+const apiKey = 'a5896f288c42d0b5b853f3f61debe275'
+const forecastUrl = 'https://api.openweathermap.org/data/2.5/weather?q='
+let city = 'Pokhara';
+const getCurrentForecast = async () => {
+  const urlToFetch = `${forecastUrl}${city}&appid=${apiKey}&units=metric`
+  try {
+    const response = await fetch(urlToFetch);
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    const jsonResponse = await response.json();
+    return jsonResponse;
+  }
+  catch(error){
+    console.log(error.message)
+  }
+}
+
+// const executeSearch = async () => {
+//   const api = document.querySelector('.api');
+//   let tempH2 = document.createElement('h2');
+//   const tempData = await getCurrentForecast()
+//   tempH2.textContent = tempData.main.temp
+//   api.append(tempH2)
+// };

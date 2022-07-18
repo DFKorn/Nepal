@@ -708,6 +708,32 @@ footer span {
         padding: 0.1rem;
         pointer-events: none;
     }
+    
+    .news button {
+        top: 13vw;
+    }
+    
+    .news .fa-solid {
+        font-size: 4.5vw;
+    }
+
+    .news-card{
+        width: 58vw;
+        padding: 0 0.5vw;
+    }
+
+    .news-card-image img {
+        width: 58vw;
+        height: 30vw;
+    }
+
+    .date p {
+        font-size: calc(0.7rem + 0.7vw);
+    }
+
+    .news-card-header h4 {
+        font-size: calc(0.7rem + 0.9vw);
+    }
 }
 
 @media screen and (max-width: 940px){
