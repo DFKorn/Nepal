@@ -204,11 +204,11 @@ executeNewsLoad();
 
 //Async function that fetches weather object using "OpenWeather API"
 //https://openweathermap.org/
-const apiKey = 'a5896f288c42d0b5b853f3f61debe275'
+const weatherKey = 'a5896f288c42d0b5b853f3f61debe275'
 const forecastUrl = 'https://api.openweathermap.org/data/2.5/weather?q='
 let city = 'Pokhara';
 const getCurrentForecast = async () => {
-  const urlToFetch = `${forecastUrl}${city}&appid=${apiKey}&units=metric`
+  const urlToFetch = `${forecastUrl}${city}&appid=${weatherKey}&units=metric`
   try {
     const response = await fetch(urlToFetch);
     if (!response.ok) {
