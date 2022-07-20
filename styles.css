@@ -532,7 +532,7 @@ h3{
 }
 .news-card{
     position: relative;
-    width: 25vw;
+    width: 23vw;
     scroll-snap-align: end;
     scroll-snap-stop: normal;
     flex-shrink: 0;
@@ -548,7 +548,7 @@ h3{
 
 .news-card-image img{
     display: block;
-    width: 25vw;
+    width: 23vw;
     height: 15vw;
     object-fit: cover;
 }
@@ -718,13 +718,13 @@ footer span {
     }
 
     .news-card{
-        width: 58vw;
+        width: 78vw;
         padding: 0 0.5vw;
     }
 
     .news-card-image img {
-        width: 58vw;
-        height: 30vw;
+        width: 78vw;
+        height: 35vw;
     }
 
     .date p {

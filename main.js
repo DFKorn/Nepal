@@ -8,7 +8,7 @@ const locations = document.querySelectorAll('.location');
 
 const gallery = document.querySelector('.destinations');
 const gallery_scroller = gallery.querySelector('.slideshow');
-const gallery_item_size = gallery_scroller.querySelector('.location').clientWidth;
+let gallery_item_size = gallery_scroller.querySelector('.location').clientWidth;
 
 gallery.querySelector('.next').addEventListener('click', scrollToNextPage);
 gallery.querySelector('.previous').addEventListener('click', scrollToPrevPage);
@@ -114,8 +114,10 @@ const removeBodyOverflow = () => {
 } 
 
 window.addEventListener('resize', ()=>{
-  removeActiveClass()
-  removeBodyOverflow()
+  removeActiveClass();
+  removeBodyOverflow();
+  gallery_item_size = gallery_scroller.querySelector('.location').clientWidth;
+  news_gallery_item_size = news_gallery_scroller.querySelector('.news-card').clientWidth;
 }) 
 
 removeActiveClass()
@@ -194,6 +196,7 @@ const executeNewsLoad = async () => {
     const newsCard = createNewsCardDiv(newsData, i)
     slider.append(newsCard)
   }
+  news_gallery_item_size = news_gallery_scroller.querySelector('.news-card').clientWidth;
 }
 executeNewsLoad();
 
@@ -226,3 +229,18 @@ const getCurrentForecast = async () => {
 //   tempH2.textContent = tempData.main.temp
 //   api.append(tempH2)
 // };
+
+
+const newsGallery = document.querySelector('.news');
+const news_gallery_scroller = document.querySelector('.news-slider');
+let news_gallery_item_size;
+
+newsGallery.querySelector('.next').addEventListener('click', scrollToNextNewsPage);
+newsGallery.querySelector('.previous').addEventListener('click', scrollToPrevNewsPage);
+
+function scrollToNextNewsPage() {
+  news_gallery_scroller.scrollBy(news_gallery_item_size, 0);
+}
+function scrollToPrevNewsPage() {
+  news_gallery_scroller.scrollBy(-news_gallery_item_size, 0);
+}
