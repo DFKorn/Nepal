@@ -192,7 +192,7 @@ const getNews = async () => {
 const executeNewsLoad = async () => {
   const newsData = await getNews()
   const slider = document.querySelector('.news-slider')
-  for(let i = 0; i < 8; i++) {
+  for(let i = 0; i < Math.min(newsData.articles.length, 8); i++) {
     const newsCard = createNewsCardDiv(newsData, i)
     slider.append(newsCard)
   }
