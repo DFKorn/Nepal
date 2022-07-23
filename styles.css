@@ -430,6 +430,7 @@ h3{
     transform: scale(1.2);
     z-index: 30;
     border-radius: 10px 10px 0 0;
+    transition: all 0.5s ease-out 0.5s;
 }
 
 .season:first-of-type{
@@ -475,6 +476,7 @@ h3{
     height: 25%;
     background-color: #100c02;
     border-radius: 0 0 10px 10px;
+    transition: all .3s ease 0.5s;
     /* display: flex;
     align-items: center;
     justify-content: flex-end; */
@@ -649,20 +651,22 @@ footer img {
 
 @media screen and (max-width: 700px) {
 
-    /*h2 {
-        font-size: 2.2vh;
-    }*/
+    .hero-header h1 {
+        font-size: calc(1.4rem + 24vw);
+    }
+
     h3 {
         /*font-size: 4.3vw*/
         font-size: calc(0.4rem + 2.7vw);
     }
     
     .hero{
-        height: 45vh;
+        height: 39vh;
     }
 
     .hero-logo h4 {
         font-size: 1.5rem;
+        right: 15%;
     }
     li.contacts {
         display: none;
