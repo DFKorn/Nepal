@@ -139,6 +139,10 @@ const getNews = async () => {
       headers: {'x-api-key': newsApi}
     });
     if (!response.ok) {
+      const newsDiv = document.querySelector('.news')
+      newsDiv.style.textAlign = 'center'
+      newsDiv.style.color = '#874040'
+      newsDiv.textContent = 'We are sorry. Something went wrong with our news section. We will fix it as soon as possible.'
       throw new Error(`HTTP error: ${response.status}`);
     }
     const jsonResponse = await response.json();
@@ -148,6 +152,7 @@ const getNews = async () => {
     console.log(error.message)
   }
 };
+
 
  //Function to create "news-card" div 
  const createNewsCardDiv = (newsData, index) => {
@@ -163,7 +168,7 @@ const getNews = async () => {
   newsImageDiv.append(newsImage)
   newsImageDiv.setAttribute('href', newsLink)
   // create news-content element
-  //create date element
+  // create date element
   const dateDiv = document.createElement('div');
   dateDiv.classList.add('date');
   const dateParagraph = document.createElement('p');
@@ -206,9 +211,48 @@ executeNewsLoad();
 //https://openweathermap.org/
 const weatherKey = 'a5896f288c42d0b5b853f3f61debe275'
 const forecastUrl = 'https://api.openweathermap.org/data/2.5/weather?q='
-let city = 'Pokhara';
+const searchInput = document.querySelector('.search-input')
+let city = searchInput.value ===''? 'Pokhara' : searchInput.value
+// let city = 'Pokhara';
 const getCurrentForecast = async () => {
-  const urlToFetch = `${forecastUrl}${city}&appid=${weatherKey}&units=metric`
+  const urlToFetch = `${forecastUrl}${city}&appid=${weatherKey}&units=metric`;
+  try {
+    const response = await fetch(urlToFetch);
+    if (!response.ok) {
+      const errorParagraph = document.querySelector('.error-paragraph')
+      if(!errorParagraph){
+        const errorMessageParagraph = document.createElement('p');
+        errorMessageParagraph.classList.add('error-paragraph');
+        errorMessageParagraph.textContent = 'Try another city!';
+        const formDiv = document.querySelector('.weather-form-container');
+        formDiv.append(errorMessageParagraph);
+      }
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    const errorParagraph = document.querySelector('.error-paragraph')
+    if (errorParagraph){
+      errorParagraph.remove()
+    }
+    const jsonResponse = await response.json();
+    return jsonResponse;
+  }
+  catch(error){
+    console.log(error.message)
+  }
+}
+
+
+let form = document.querySelector('.weather-form')
+form.addEventListener('submit',(event) => {
+  event.preventDefault()
+  city = searchInput.value;
+  executeWeatherLoad()
+})  
+
+
+const WeekForecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q='
+const getWeaklyForecast = async () => {
+  const urlToFetch = `${WeekForecastUrl}${city}&appid=${weatherKey}&units=metric`
   try {
     const response = await fetch(urlToFetch);
     if (!response.ok) {
@@ -222,13 +266,100 @@ const getCurrentForecast = async () => {
   }
 }
 
-// const executeSearch = async () => {
-//   const api = document.querySelector('.api');
-//   let tempH2 = document.createElement('h2');
-//   const tempData = await getCurrentForecast()
-//   tempH2.textContent = tempData.main.temp
-//   api.append(tempH2)
-// };
+//ConvertDate function converts time from local  
+//to the desired region's time based on timzoneOffset
+//parameters date and timzoneOffset are meant to be taken from OpenWeather API
+const convertDate = (/*date,*/ timezoneOffset, date = Date.now()) => {
+  const localTimezoneOffset = new Date().getTimezoneOffset() * 60 * 1000;
+  const regionalOffset = timezoneOffset * 1000;
+  let localDateToRegional = new Date(date/**1000*/ + localTimezoneOffset + regionalOffset)
+  return localDateToRegional;
+}
+
+
+
+const executeWeatherLoad = async () => {
+  const weatherData = await getCurrentForecast();
+  const titleHeader = document.querySelector('.title-header');
+  const measureTime = document.querySelector('.measure-time');
+  const mainTempValue = document.querySelector('.temp-value');
+  const weatherIcon = document.querySelector('.weather-icon');
+  const weatherDescription = document.querySelector('.condition-description span')
+  const feelsLikeTemp = document.querySelector('.feels-temp');
+  const windSpeed = document.querySelector('.speed-value');
+  const humidity = document.querySelector('.humidity-value');
+  const pressure = document.querySelector('.pressure-value')
+  let regionTime = convertDate(/*weatherData.dt,*/ weatherData.timezone)
+
+
+  titleHeader.textContent = weatherData.name
+  measureTime.textContent = `${regionTime.toString().slice(0,21)}`;
+  mainTempValue.textContent = weatherData.main.temp.toFixed(1);
+  weatherIcon.setAttribute('src', `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`);
+  weatherDescription.textContent = (weatherData.weather[0].description);
+  // Making first letter of weather description uppercse
+  weatherDescription.textContent = weatherDescription.textContent[0].toUpperCase() +  weatherDescription.textContent.slice(1);
+
+  feelsLikeTemp.textContent = weatherData.main.feels_like.toFixed(1);
+  windSpeed.textContent = weatherData.wind.speed + ' m/s';
+  humidity.textContent = weatherData.main.humidity + ' %';
+  pressure.textContent = weatherData.main.pressure + ' hPa';
+}
+
+
+const weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+const weaklyWeatherLoad = async () => {
+  const weatherData = await getWeaklyForecast();
+
+  const dayDivs = document.querySelectorAll('.day-weather');
+  const dayTemps = document.querySelectorAll('.day-temp-value');
+  const dayHeaders = document.querySelectorAll('.day-header');
+  const measureDates = document.querySelectorAll('.measure-date');
+  const dayWeatherIcons = document.querySelectorAll('.day-weather-icon')
+  const conditionDescriptions = document.querySelectorAll('.day-condition-description');
+  let timestamp = 0;
+  let regionTime = convertDate(weatherData.city.timezone, (weatherData.list[timestamp].dt)*1000);
+  
+  for(let i = 0; i < Math.min(dayDivs.length, 5); i++){
+    console.log(regionTime)
+    console.log(i);
+    // console.log(regionTime.getHours())
+    //timestamp step in WeatherAPI is 3 hours
+    //the desired timestamp time is 11:45 - 12:00(region time)
+    //the "if" statement below calculates the number of steps between 
+    //the first timestamp and the desired timestamp
+    // if(regionTime.getHours() < 11){
+    //   timestamp += Math.floor((11 - regionTime.getHours()) / 3)
+    // } else if(regionTime.getHours() > 11){
+    //   timestamp += Math.floor((24 - (regionTime.getHours() - 11)) / 3)
+    // } else{
+    //   timestamp += 8
+    // }
+    if(regionTime.getHours() >= 11 && regionTime.getHours() <=14 && i === 0){
+      timestamp = 0;
+    } else if(regionTime.getHours() >= 11 && regionTime.getHours() <=14){
+      timestamp += 8;
+    } else if(regionTime.getHours() < 11){
+      timestamp += Math.floor((12 - regionTime.getHours()) / 3);
+    } else if(regionTime.getHours() > 14){
+      timestamp += Math.floor((24 - (regionTime.getHours() - 12)) / 3);
+    } else{
+      timestamp += 8;
+    }
+
+    regionTime = convertDate(weatherData.city.timezone, weatherData.list[timestamp].dt*1000);
+    console.log(timestamp)
+    // dayHeader[i].textContent = weekday[regionTime.getDay()]
+    dayHeaders[i].textContent = regionTime.toString().slice(0,4)
+    measureDates[i].textContent = regionTime.toString().slice(4,11)
+    dayTemps[i].textContent = weatherData.list[timestamp].main.temp.toFixed(1);
+    dayWeatherIcons[i].setAttribute('src', `http://openweathermap.org/img/wn/${weatherData.list[timestamp].weather[0].icon}@2x.png`)
+    conditionDescriptions[i].textContent = weatherData.list[timestamp].weather[0].description
+
+
+  }
+}
 
 
 const newsGallery = document.querySelector('.news');

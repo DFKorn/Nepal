@@ -301,12 +301,12 @@
         </div>
       </div>
     </section>
-    <section id="Nepal-Now">
+    <section id="Nepal-Now" class="nepal-now">
       <div class="section-header">
         <h2 class="scroll-fade">Nepal Now</h2>
-        <p class="scroll-fade">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate, vel pariatur molestias suscipit ipsa minus, quae reprehenderit voluptatibus adipisci, quas delectus? Iste ex, pariatur laudantium illum iure nesciunt tenetur. Mollitia?</p>
+        <h3 class="scroll-fade">Latest Nepal news</h3>
       </div>
-      <div class="news">
+      <div class="news scroll-fade">
         <button class="previous">
           <i class="fa-solid fa-chevron-left"></i>
         </button>
@@ -330,10 +330,149 @@
           <i class="fa-solid fa-chevron-right"></i>
         </button>
       </div>
+      <div class="weather">
+        <div class="weather-header">
+          <h3 class="scroll-fade">Curent weather and 5 day forecast</h3>
+        </div>
+        <div class="forecast">
+          <div class="weather-form-container">
+            <form class="weather-form scroll-fade">
+              <!-- <label for="city-name">Enter city name</label> -->
+              <input name="city-name" id="city-name" type="text" class="search-input" placeholder="Enter city name" required value>
+              <button type="submit" class="search-button">
+                <span class="button-wrap">
+                  <span class="button-icon"></span>
+                </span>
+                
+              </button>
+            </form>
+          </div>
+          
+          <div class="weather-info">
+            <div class="current-weather scroll-fade">
+              <div class="current-weather-title">
+                <h4 class="title-header">Pokhara</h3>
+                <div class="title-time">
+                  <span class="measure-time">24 july 2022</span>
+                </div>
+              </div>
+              <div class="current-weather-main">
+                <div class="main-temp">
+                  <span class="temp-value">25</span>
+                </div>
+                <img src="http://openweathermap.org/img/wn/04n@2x.png" alt="weather icon" class="weather-icon">
+                <div class="weather-conditions">
+                  <div class="condition-description">
+                    <span>Moderate rain</span>
+                  </div>
+                  <div class="feels-like">
+                    <span>Feels like</span>
+                    <span class="feels-temp">27</span>
+                  </div>
+                </div>
+              </div>
+              <div class="current-weather-additionals">
+                <div class="wind-speed">
+                  <span>Wind:</span>
+                  <span class="speed-value">459</span>
+                </div>
+                <div class="humidity">
+                  <span>Humidity:</span>
+                  <span class="humidity-value">70</span>
+                </div>
+                <div class="pressure">
+                  <span>Pressure:</span>
+                  <span class="pressure-value">756</span>
+                </div>
+              </div>
+            </div>
+            <div class="week-weather scroll-fade">
+              <div class="week-weather-title">
+                <h4>5 day forecast</h4>
+              </div>
+              <div class="week-weather-container">
+                <div class="day-weather">
+                  <div class="day-title">
+                    <h4 class="day-header">Mon</h4>
+                  </div>
+                  <div class="day-date">
+                    <span class="measure-date">Aug 05</span>
+                  </div>
+                  <img src="http://openweathermap.org/img/wn/04d@2x.png" alt="day weather icon" class="day-weather-icon">
+                  <div class="day-temp">
+                    <span class="day-temp-value">+31</span>
+                  </div>
+                  <div class="day-weather-conditions">
+                    <span class="day-condition-description">Light rain</span>
+                  </div>
+                </div>
+                <div class="day-weather">
+                  <div class="day-title">
+                    <h4 class="day-header">Mon</h4>
+                  </div>
+                  <div class="day-date">
+                    <span class="measure-date">Aug 05</span>
+                  </div>
+                  <img src="http://openweathermap.org/img/wn/04d@2x.png" alt="day weather icon" class="day-weather-icon">
+                  <div class="day-temp">
+                    <span class="day-temp-value">+31</span>
+                  </div>
+                  <div class="day-weather-conditions">
+                    <span class="day-condition-description">Light rain</span>
+                  </div>
+                </div>
+                <div class="day-weather">
+                  <div class="day-title">
+                    <h4 class="day-header">Mon</h4>
+                  </div>
+                  <div class="day-date">
+                    <span class="measure-date">Aug 05</span>
+                  </div>
+                  <img src="http://openweathermap.org/img/wn/04d@2x.png" alt="day weather icon" class="day-weather-icon">
+                  <div class="day-temp">
+                    <span class="day-temp-value">+31</span>
+                  </div>
+                  <div class="day-weather-conditions">
+                    <span class="day-condition-description">Light rain</span>
+                  </div>
+                </div>
+                <div class="day-weather">
+                  <div class="day-title">
+                    <h4 class="day-header">Mon</h4>
+                  </div>
+                  <div class="day-date">
+                    <span class="measure-date">Aug 05</span>
+                  </div>
+                  <img src="http://openweathermap.org/img/wn/04d@2x.png" alt="day weather icon" class="day-weather-icon">
+                  <div class="day-temp">
+                    <span class="day-temp-value">+31</span>
+                  </div>
+                  <div class="day-weather-conditions">
+                    <span class="day-condition-description">Light rain</span>
+                  </div>
+                </div>
+                <div class="day-weather">
+                  <div class="day-title">
+                    <h4 class="day-header">Mon</h4>
+                  </div>
+                  <div class="day-date">
+                    <span class="measure-date">Aug 05</span>
+                  </div>
+                  <img src="http://openweathermap.org/img/wn/04d@2x.png" alt="day weather icon" class="day-weather-icon">
+                  <div class="day-temp">
+                    <span class="day-temp-value">+31</span>
+                  </div>
+                  <div class="day-weather-conditions">
+                    <span class="day-condition-description">Light rain</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
     </section>
-    <div class="weather">
-      <div class="api"></div>
-    </div>
     <footer>
       <div class="footer">
         <div class="logo"> 
