@@ -205,6 +205,20 @@ const executeNewsLoad = async () => {
 }
 executeNewsLoad();
 
+const newsGallery = document.querySelector('.news');
+const news_gallery_scroller = document.querySelector('.news-slider');
+let news_gallery_item_size;
+
+newsGallery.querySelector('.next').addEventListener('click', scrollToNextNewsPage);
+newsGallery.querySelector('.previous').addEventListener('click', scrollToPrevNewsPage);
+
+function scrollToNextNewsPage() {
+  news_gallery_scroller.scrollBy(news_gallery_item_size, 0);
+}
+function scrollToPrevNewsPage() {
+  news_gallery_scroller.scrollBy(-news_gallery_item_size, 0);
+}
+
 //Weather fetch and render code
 
 //Async function that fetches weather object using "OpenWeather API"
@@ -240,14 +254,6 @@ const getCurrentForecast = async () => {
     console.log(error.message)
   }
 }
-
-
-let form = document.querySelector('.weather-form')
-form.addEventListener('submit',(event) => {
-  event.preventDefault()
-  city = searchInput.value;
-  executeWeatherLoad()
-})  
 
 
 const WeekForecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q='
@@ -291,7 +297,6 @@ const executeWeatherLoad = async () => {
   const pressure = document.querySelector('.pressure-value')
   let regionTime = convertDate(/*weatherData.dt,*/ weatherData.timezone)
 
-
   titleHeader.textContent = weatherData.name
   measureTime.textContent = `${regionTime.toString().slice(0,21)}`;
   mainTempValue.textContent = weatherData.main.temp.toFixed(1);
@@ -306,8 +311,6 @@ const executeWeatherLoad = async () => {
   pressure.textContent = weatherData.main.pressure + ' hPa';
 }
 
-
-const weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
 const weaklyWeatherLoad = async () => {
   const weatherData = await getWeaklyForecast();
@@ -324,54 +327,39 @@ const weaklyWeatherLoad = async () => {
   for(let i = 0; i < Math.min(dayDivs.length, 5); i++){
     console.log(regionTime)
     console.log(i);
-    // console.log(regionTime.getHours())
     //timestamp step in WeatherAPI is 3 hours
-    //the desired timestamp time is 11:45 - 12:00(region time)
+    //the desired timestamp time is 11:00 - 14:00(region time)
     //the "if" statement below calculates the number of steps between 
-    //the first timestamp and the desired timestamp
-    // if(regionTime.getHours() < 11){
-    //   timestamp += Math.floor((11 - regionTime.getHours()) / 3)
-    // } else if(regionTime.getHours() > 11){
-    //   timestamp += Math.floor((24 - (regionTime.getHours() - 11)) / 3)
-    // } else{
-    //   timestamp += 8
-    // }
+    //the first timestamp and the desired timestamp 
     if(regionTime.getHours() >= 11 && regionTime.getHours() <=14 && i === 0){
       timestamp = 0;
     } else if(regionTime.getHours() >= 11 && regionTime.getHours() <=14){
       timestamp += 8;
     } else if(regionTime.getHours() < 11){
-      timestamp += Math.floor((12 - regionTime.getHours()) / 3);
+      timestamp += Math.round((12 - regionTime.getHours()) / 3);
     } else if(regionTime.getHours() > 14){
-      timestamp += Math.floor((24 - (regionTime.getHours() - 12)) / 3);
+      timestamp += Math.round((24 - (regionTime.getHours() - 12)) / 3);
     } else{
       timestamp += 8;
     }
 
     regionTime = convertDate(weatherData.city.timezone, weatherData.list[timestamp].dt*1000);
     console.log(timestamp)
-    // dayHeader[i].textContent = weekday[regionTime.getDay()]
     dayHeaders[i].textContent = regionTime.toString().slice(0,4)
     measureDates[i].textContent = regionTime.toString().slice(4,11)
     dayTemps[i].textContent = weatherData.list[timestamp].main.temp.toFixed(1);
     dayWeatherIcons[i].setAttribute('src', `http://openweathermap.org/img/wn/${weatherData.list[timestamp].weather[0].icon}@2x.png`)
     conditionDescriptions[i].textContent = weatherData.list[timestamp].weather[0].description
-
-
   }
 }
 
+let form = document.querySelector('.weather-form')
+form.addEventListener('submit',(event) => {
+  event.preventDefault()
+  city = searchInput.value;
+  executeWeatherLoad()
+  weaklyWeatherLoad()
+})
 
-const newsGallery = document.querySelector('.news');
-const news_gallery_scroller = document.querySelector('.news-slider');
-let news_gallery_item_size;
-
-newsGallery.querySelector('.next').addEventListener('click', scrollToNextNewsPage);
-newsGallery.querySelector('.previous').addEventListener('click', scrollToPrevNewsPage);
-
-function scrollToNextNewsPage() {
-  news_gallery_scroller.scrollBy(news_gallery_item_size, 0);
-}
-function scrollToPrevNewsPage() {
-  news_gallery_scroller.scrollBy(-news_gallery_item_size, 0);
-}
+executeWeatherLoad()
+weaklyWeatherLoad()
