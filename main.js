@@ -275,14 +275,12 @@ const getWeaklyForecast = async () => {
 //ConvertDate function converts time from local  
 //to the desired region's time based on timzoneOffset
 //parameters date and timzoneOffset are meant to be taken from OpenWeather API
-const convertDate = (/*date,*/ timezoneOffset, date = Date.now()) => {
+const convertDate = (timezoneOffset, date = Date.now()) => {
   const localTimezoneOffset = new Date().getTimezoneOffset() * 60 * 1000;
   const regionalOffset = timezoneOffset * 1000;
   let localDateToRegional = new Date(date/**1000*/ + localTimezoneOffset + regionalOffset)
   return localDateToRegional;
 }
-
-
 
 const executeWeatherLoad = async () => {
   const weatherData = await getCurrentForecast();
@@ -310,7 +308,6 @@ const executeWeatherLoad = async () => {
   humidity.textContent = weatherData.main.humidity + ' %';
   pressure.textContent = weatherData.main.pressure + ' hPa';
 }
-
 
 const weaklyWeatherLoad = async () => {
   const weatherData = await getWeaklyForecast();
