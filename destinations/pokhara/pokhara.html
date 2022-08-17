@@ -14,25 +14,48 @@
     <header>
         <div class="header">
           <a class="logo" href="../../index.html">NepalTravel</a>
+          <div class="toggle"></div>
           <nav>
             <ul>
               <li class="socials"> 
-                <a href="https://www.facebook.com">
-                <img src="../../Resources/fb1.jpg" alt="Facebook">
+                <a href="https://web.telegram.org">
+                <img src="../../Resources/Icons/telegram-brands.svg" alt="Telegram">
                 </a>
               </li>
               <li class="socials">
                 <a href="https://vk.com/">
-                <img src="../../Resources/vk1.jpg" alt="vk">
+                <img src="../../Resources/Icons/vk-brands.svg" alt="vk">
               </a>
               </li>
               <li class="socials">
-                <a href="https://www.instagram.com">
-                <img src="../../Resources/inst.jpg" alt="instagram">
+                <a href="https://www.youtube.com/">
+                <img src="../../Resources/Icons/youtube-square-brands.svg" alt="YouTube">
                 </a>
               </li>
             </ul>
           </nav>
+          <div class="toggle-panel">
+            <div class="navigation">
+              <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../about/about.html">About</a></li>
+                <li><a href="">Blog</a></li>
+              </ul>
+            </div>
+            <footer class="navigation-footer">
+              <div class="contacts">
+                <a href="https://web.telegram.org">
+                  <img src="../../Resources/Icons/telegram-brands.svg" alt="Telegram">
+                </a>
+                <a href="https://vk.com/">
+                  <img src="../../Resources/Icons/vk-brands.svg" alt="vk">
+                </a>
+                <a href="https://www.youtube.com/">
+                  <img src="../../Resources/Icons/youtube-square-brands.svg" alt="YouTube">
+                </a>
+              </div>
+            </footer>
+          </div>
         </div>
       </header>
     <main>
@@ -99,7 +122,41 @@
         </div>
       </div>
     </main>
-    
+    <script>
+      //Toggle Panel 
+      const toggleMenu = document.querySelector('.toggle');
+      const togglePanel = document.querySelector('.toggle-panel')
+      const body = document.querySelector('body');
+
+      toggleMenu.onclick = function(){
+        toggleMenu.classList.toggle('active')
+        togglePanel.classList.toggle('active')
+        body.style.overflow === '' ? body.style.overflow ='hidden' : body.style.overflow =''
+      }
+
+      const removeActiveClass = () => {
+        if (window.innerWidth > 940 && toggleMenu.classList.contains('active')) {
+          toggleMenu.classList.remove('active')
+          togglePanel.classList.remove('active')
+        }
+      }
+
+      const removeBodyOverflow = () => {
+        if (window.innerWidth > 940 && body.style.overflow === 'hidden'){
+          body.style.overflow = '';
+        }
+      } 
+
+      window.addEventListener('resize', ()=>{
+        removeActiveClass();
+        removeBodyOverflow();
+        gallery_item_size = gallery_scroller.querySelector('.location').clientWidth;
+        news_gallery_item_size = news_gallery_scroller.querySelector('.news-card').clientWidth;
+      }) 
+
+      removeActiveClass()
+      removeBodyOverflow()
+    </script>
     
 </body>
 </html>

@@ -208,14 +208,14 @@ footer img {
         width: 30px;
         height: 30px;
         cursor: pointer;
-        background: url(../Resources/Navigation/bars.svg);
+        background: url('../Resources/Navigation/bars.svg');
         background-size: 30px;
         background-position: center;
         background-repeat: no-repeat;
         z-index: 100;
     }
     .toggle.active{
-        background: url(../Resources/Navigation/close.svg);
+        background: url('../Resources/Navigation/close.svg');
         background-size: 25px;
         background-position: center;
         background-repeat: no-repeat;
@@ -263,12 +263,8 @@ footer img {
         grid-row: 3/ span1;
     }
 
-    .destinations button {
-        width: 3.4vw;
-    }
-
-    .news button {
-        width: 3.4vw;
+    .background-container{
+        margin-bottom: -40vh;
     }
 
 }
