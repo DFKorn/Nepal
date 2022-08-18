@@ -265,4 +265,14 @@ li img{
         grid-row: 3/ span1;
     }
 
+    .pic1{
+        background-attachment: scroll;
+    }
+    .pic2{
+        background-attachment: scroll;
+    }
+    .pic3{
+        background-attachment: scroll;
+    }
+
 }

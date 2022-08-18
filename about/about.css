@@ -267,4 +267,8 @@ footer img {
         margin-bottom: -40vh;
     }
 
+    .pic1{
+        background-attachment: scroll;
+    }
+
 }
