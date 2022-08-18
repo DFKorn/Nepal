@@ -871,6 +871,32 @@ footer img {
     width: 25px;
 }
 
+
+@media screen and (max-width: 1350px){
+    .destinations button {
+        width: 3.7vw;
+    }
+    
+    .news button {
+        width: 3.7vw;
+    }
+
+    @media (hover: none) {
+        button {display: none;}
+      } 
+
+    .section-header{
+        font-size: 17px;
+    }
+
+    .search-input{
+        font-size: calc(0.7rem + 0.5vw);
+    }
+
+    
+}
+
+
 @media screen and (max-width: 700px) {
 
     .hero-header h1 {
@@ -981,6 +1007,10 @@ footer img {
         width: 80vw;
         margin: 1% auto;
         max-width: 95%;
+    }
+
+    .search-input{
+        font-size: calc(0.9rem + 0.5vw);
     }
 
     .weather-info{
@@ -1129,18 +1159,7 @@ footer img {
         margin-top: 1rem;
     }
 
+    
+
 }
 
-@media screen and (max-width: 1350px){
-    .destinations button {
-        width: 3.7vw;
-    }
-
-    .news button {
-        width: 3.7vw;
-    }
-
-    .section-header{
-        font-size: 17px;
-    }
-}
