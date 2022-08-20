@@ -175,7 +175,7 @@ const getNews = async () => {
   const dateContent = newsData.articles[index].published_date;
   dateParagraph.textContent = dateContent;
   const calendarImage = document.createElement('img');
-  calendarImage.setAttribute('src', './Resources/calendar.svg')
+  calendarImage.setAttribute('src', './Resources/Icons/calendar.svg')
   dateDiv.append(calendarImage, dateParagraph)
   // create news-card-header element
   const newsCardHeader = document.createElement('a')
