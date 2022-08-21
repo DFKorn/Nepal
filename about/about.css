@@ -53,11 +53,14 @@ nav{
     padding-right: 2%;
 }
 
-
-li{
-    vertical-align: middle;
+nav li {
     display: inline-block;
     padding-left: 2rem;
+}
+
+li{
+    list-style: none;
+    vertical-align: middle;
 }
 
 li.socials {
