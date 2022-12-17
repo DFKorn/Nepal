@@ -957,6 +957,10 @@ footer img {
         font-size: calc(0.7rem + 0.9vw);
     }
 
+    .forecast{
+        padding-left: 0;
+    }
+
     .weather-form-container{
         flex-direction: column;
     }
