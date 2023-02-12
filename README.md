@@ -1,6 +1,6 @@
 # Nepal Travel
 
-## This is a website of a travel agency (not real) from Nepal.
+## Website of a travel agency (not real) from Nepal.
 
 ### Technologies: 
 * JavaScript(ES6+)
