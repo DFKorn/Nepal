@@ -284,21 +284,22 @@ h3{
     outline: 0;
     cursor: pointer;
     opacity: 0;
-    background-color: #e5ebed;
     top:0;
 }
 .destinations button.previous{
     left: 0;
-    border-radius: 0 10px 10px 0;
+    /* border-radius: 0 10px 10px 0; */
+    background: linear-gradient(270deg,#ffffff00, #e5ebed);
 }
 
 .destinations button.next{
     right: 0;
-    border-radius: 10px 0 0 10px;
+    /* border-radius: 10px 0 0 10px; */
+    background: linear-gradient(90deg,#ffffff00, #e5ebed);
 }
 
 .fa-solid{
-    font-size: 1.5vw;
+    font-size: 2vw;
     color: #012e4b;
     position: relative;
 }
