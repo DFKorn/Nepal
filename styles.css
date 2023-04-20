@@ -340,7 +340,7 @@ h3{
    
 .scrolled {
     opacity: 1;
-    animation: fade-in 1s ease-in-out both;
+    animation: fade-in 0.7s ease-in-out both;
 }
 
 @keyframes fade-in {
