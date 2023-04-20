@@ -4,8 +4,6 @@ const prev = document.querySelector('.previous');
 const next = document.querySelector('.next');
 const locations = document.querySelectorAll('.location');
 
-
-
 const gallery = document.querySelector('.destinations');
 const gallery_scroller = gallery.querySelector('.slideshow');
 let gallery_item_size = gallery_scroller.querySelector('.location').clientWidth;
@@ -19,26 +17,19 @@ function scrollToNextPage() {
 function scrollToPrevPage() {
   gallery_scroller.scrollBy(-gallery_item_size, 0);
 }
-/*
-function scrollToNextPage() {
-  gallery_scroller.scrollBy({left: gallery_item_size,
-  behavior: 'smooth'});
+
+//Throttle function for scrolling animation
+let throttleTimer;
+
+const throttle = (callback, time) => {
+  if (throttleTimer) return;
+
+  throttleTimer = true;
+  setTimeout(() => {
+    callback();
+    throttleTimer = false;
+  }, time);
 }
-function scrollToPrevPage() {
-  gallery_scroller.scrollBy({left: -gallery_item_size,
-  behavior: 'smooth'});
-}*/
-
-
-//
-/*let resizeTimer;
-window.addEventListener("resize", () => {
-  slider.classList.add("resize-animation-stopper");
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    slider.classList.remove("resize-animation-stopper");
-  }, 400);
-});*/
 
 
 //Scrolling Animation
@@ -70,7 +61,7 @@ const handleScrollAnimation = () => {
       hideScrollElement(el);
     }
   })  
-  } 
+} 
  
 const handleAnimation = () =>{
   scrollElements.forEach((el) =>{
@@ -86,7 +77,8 @@ window.addEventListener('resize', ()=>{
 })
 
 window.addEventListener('scroll', () => {
-  handleScrollAnimation();
+  throttle(handleScrollAnimation, 200)
+  
 })
 
 //Toggle Panel 
