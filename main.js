@@ -290,7 +290,7 @@ const executeWeatherLoad = async () => {
   titleHeader.textContent = weatherData.name
   measureTime.textContent = `${regionTime.toString().slice(0,21)}`;
   mainTempValue.textContent = weatherData.main.temp.toFixed(1);
-  weatherIcon.setAttribute('src', `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`);
+  weatherIcon.setAttribute('src', `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`);
   weatherDescription.textContent = (weatherData.weather[0].description);
   // Making first letter of weather description uppercse
   weatherDescription.textContent = weatherDescription.textContent[0].toUpperCase() +  weatherDescription.textContent.slice(1);
