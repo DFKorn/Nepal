@@ -8,7 +8,10 @@
     <meta name="description" content="Travel guide of Nepal" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="any">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link href="https://fonts.googleapis.com/css?family=Overpass|Permanent+Marker" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Overpass&family=Permanent+Marker&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Overpass&family=Permanent+Marker&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="./main.js" defer></script>
     <script src="https://kit.fontawesome.com/dec1eff8f1.js" crossorigin="anonymous"></script>
@@ -75,8 +78,9 @@
     </header>
     <section class="hero">
       <div class="hero-header">
-        <video class="hero-video" autoplay muted loop>
-          <source src="./Resources/hero-video.mp4" type="video/mp4">
+        <video class="hero-video" autoplay muted loop
+        poster = './Resources/hero-video-poster.jpg'>
+          <source src="./Resources/hero-video.mp4" type="video/mp4"> 
         </video>
         <h1>Open Nepal</h1>
         <div class="mix-overlay"></div>
