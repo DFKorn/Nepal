@@ -337,7 +337,7 @@ const weaklyWeatherLoad = async () => {
     dayHeaders[i].textContent = regionTime.toString().slice(0,4)
     measureDates[i].textContent = regionTime.toString().slice(4,11)
     dayTemps[i].textContent = weatherData.list[timestamp].main.temp.toFixed(1);
-    dayWeatherIcons[i].setAttribute('src', `http://openweathermap.org/img/wn/${weatherData.list[timestamp].weather[0].icon}@2x.png`)
+    dayWeatherIcons[i].setAttribute('src', `https://openweathermap.org/img/wn/${weatherData.list[timestamp].weather[0].icon}@2x.png`)
     conditionDescriptions[i].textContent = weatherData.list[timestamp].weather[0].description
   }
 }
