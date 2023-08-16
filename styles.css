@@ -311,6 +311,7 @@ h3{
    scroll-snap-type: x mandatory;
    overflow-x: auto;
    scroll-behavior: smooth;
+   scrollbar-width: none;
 }
 .slideshow::-webkit-scrollbar{
     display: none;
