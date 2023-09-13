@@ -5,7 +5,7 @@
 ### Technologies: 
 * JavaScript(ES6+)
 * Responsive design
-* Newscatcher API
+* [Newscatcher API](https://newscatcherapi.com/)
 * OpenWeather API
 
 ### Live - [NepalTravel](https://dfkorn.github.io/nepal)
