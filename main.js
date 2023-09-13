@@ -118,19 +118,17 @@ removeBodyOverflow()
 // Nepal Now section
 // News fetch and render code
 
-//Async function that fetches news object using "newscatcher API"
-//https://newscatcherapi.com/
-const newsApi = 'uZK0sjeVDXJ6YYa8PSV1VbrYr8rQDdRNwpcZJPHYOKQ';
-const newsUrl = 'https://api.newscatcherapi.com/v2/search?q=';
-const searchTerm = 'Nepal+AND+NOT+COVID';
-const getNews = async () => {
-  const urlToFetch = `${newsUrl}${searchTerm}`;
+//Async function that fetches news object using "WorldNews API"
+//https://worldnewsapi.com/
+const worldNewsUrl = 'https://api.worldnewsapi.com/search-news'
+const worldNewsApi = '?api-key=f75ee3a0c70d4ce0976c4ed63187631e';
+const mediaSearchTerm = '&text=nepal&language=en&earliest-publish-date=2023-06-22'
+const getWorldNews = async() => {
+  const urlToFetch = `${worldNewsUrl}${worldNewsApi}${mediaSearchTerm}`;
   try{
-    const response = await fetch(urlToFetch,{
-      method:'GET',
-      headers: {'x-api-key': newsApi}
-    });
-    if (!response.ok) {
+    const response = await fetch(urlToFetch);
+    console.log(response)
+    if (!response.ok){
       const newsDiv = document.querySelector('.news')
       newsDiv.style.textAlign = 'center'
       newsDiv.style.color = '#874040'
@@ -138,24 +136,26 @@ const getNews = async () => {
       throw new Error(`HTTP error: ${response.status}`);
     }
     const jsonResponse = await response.json();
-    return jsonResponse;
+    console.log(jsonResponse)
+    return jsonResponse
   }
   catch(error){
     console.log(error.message)
   }
-};
+}
 
 
- //Function to create "news-card" div 
- const createNewsCardDiv = (newsData, index) => {
+//Function to create "news-card" div useing WorldNews API's data
+
+const createNewsCardDiv = (newsData, index) => {
   const newsCardDiv = document.createElement('div')
   newsCardDiv.classList.add('news-card')
   // create news-card-image element
   const newsImageDiv = document.createElement('a')
   newsImageDiv.classList.add('news-card-image')
-  const newsImageUrl = newsData.articles[index].media;
+  const newsImageUrl = newsData.news[index].image;
   const newsImage = document.createElement('img');
-  const newsLink = newsData.articles[index].link;
+  const newsLink = newsData.news[index].url;
   newsImage.setAttribute('src',newsImageUrl);
   newsImageDiv.append(newsImage)
   newsImageDiv.setAttribute('href', newsLink)
@@ -164,7 +164,7 @@ const getNews = async () => {
   const dateDiv = document.createElement('div');
   dateDiv.classList.add('date');
   const dateParagraph = document.createElement('p');
-  const dateContent = newsData.articles[index].published_date;
+  const dateContent = newsData.news[index].publish_date;
   dateParagraph.textContent = dateContent;
   const calendarImage = document.createElement('img');
   calendarImage.setAttribute('src', './Resources/Icons/calendar.svg')
@@ -172,7 +172,7 @@ const getNews = async () => {
   // create news-card-header element
   const newsCardHeader = document.createElement('a')
   newsCardHeader.classList.add('news-card-header')
-  const headerContent = newsData.articles[index].title;
+  const headerContent = newsData.news[index].title;
   const newsHeader = document.createElement('h4');
   newsHeader.textContent = headerContent;
   newsCardHeader.append(newsHeader);
@@ -185,11 +185,12 @@ const getNews = async () => {
   newsCardDiv.append(newsImageDiv,newsContent)
   return newsCardDiv
 }
-// function to execute fetch and load news
+
+// function to execute fetch and load news using WorldNews API
 const executeNewsLoad = async () => {
-  const newsData = await getNews()
+  const newsData = await getWorldNews()
   const slider = document.querySelector('.news-slider')
-  for(let i = 0; i < Math.min(newsData.articles.length, 8); i++) {
+  for(let i = 0; i < Math.min(newsData['news'].length, 8); i++) {
     const newsCard = createNewsCardDiv(newsData, i)
     slider.append(newsCard)
   }
