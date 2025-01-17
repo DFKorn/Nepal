@@ -122,7 +122,7 @@ removeBodyOverflow()
 //https://worldnewsapi.com/
 const worldNewsUrl = 'https://api.worldnewsapi.com/search-news'
 const worldNewsApi = '?api-key=f75ee3a0c70d4ce0976c4ed63187631e';
-const mediaSearchTerm = '&text=nepal&language=en&earliest-publish-date=2023-06-22'
+const mediaSearchTerm = '&text=nepal&language=en&'
 const getWorldNews = async() => {
   const urlToFetch = `${worldNewsUrl}${worldNewsApi}${mediaSearchTerm}`;
   try{
@@ -223,6 +223,7 @@ let city = searchInput.value ===''? 'Pokhara' : searchInput.value
 // let city = 'Pokhara';
 const getCurrentForecast = async () => {
   const urlToFetch = `${forecastUrl}${city}&appid=${weatherKey}&units=metric`;
+  //const urlToFetch = `https://api.openweathermap.org/data/2.5/weather?q=Pokhara&units=metric&appid=${weatherKey}`
   try {
     const response = await fetch(urlToFetch);
     if (!response.ok) {
